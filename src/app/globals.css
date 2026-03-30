@@ -1,0 +1,146 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
+  --color-border: var(--border);
+}
+
+:root {
+  --background: #0f0f0f;
+  --foreground: #ededed;
+  --primary: #3b82f6; 
+  --primary-hover: #2563eb; 
+  --secondary: #1f2937; 
+  --accent: #8b5cf6; 
+  --border: #374151; 
+  --input: #1f2937;
+  --ring: #3b82f6;
+  --radius: 0.75rem;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: "rlig" 1, "calt" 1;
+  scroll-behavior: smooth;
+  overflow: hidden;
+}
+
+::selection {
+  background-color: var(--primary);
+  color: white;
+}
+
+@layer utilities {
+  .glass {
+    background-color: rgb(31 41 55 / 0.5);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgb(55 65 81 / 0.5);
+  }
+
+  .glass-panel {
+    background-color: rgb(31 41 55 / 0.3);
+    backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .text-gradient {
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    background-image: linear-gradient(to right, #60a5fa, #8b5cf6);
+  }
+}
+
+/* Custom Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.4s ease-out forwards;
+}
+
+@keyframes pulseSoft {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.animate-pulse-soft {
+  animation: pulseSoft 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Scrollable Container Support */
+.overflow-y-auto,
+.overflow-x-auto {
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+}
+
+/* Scroll Container - Keyboard & Touch Friendly */
+.scroll-container {
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  scroll-behavior: smooth;
+}
+
+/* Better scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(59, 130, 246, 0.4);
+  border-radius: 10px;
+  transition: background 0.2s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(59, 130, 246, 0.6);
+}
+
+/* Firefox scrollbar */
+* {
+  scrollbar-color: rgba(59, 130, 246, 0.4) rgba(255, 255, 255, 0.05);
+  scrollbar-width: thin;
+  scrollbar-gutter: stable;
+}
+
+/* Keyboard navigation focus visible */
+*:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
