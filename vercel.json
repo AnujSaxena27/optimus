@@ -1,12 +1,12 @@
 {
-  "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "/backend/main.py"
+  "experimentalServices": {
+    "frontend": {
+      "routePrefix": "/",
+      "framework": "nextjs"
     },
-    {
-      "src": "/(.*)",
-      "dest": "/"
+    "backend": {
+      "entrypoint": "backend",
+      "routePrefix": "/api"
     }
-  ]
+  }
 }
